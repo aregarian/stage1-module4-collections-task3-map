@@ -1,20 +1,25 @@
 package com.epam.mjc.collections.map;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class KeyValueSwapper {
     public Map<String, Integer> swap(Map<Integer, String> sourceMap) {
 
-        Map<String,Integer> hehe = new HashMap<>();
 
-        for (Map.Entry<Integer,String> me :
-                sourceMap.entrySet()) {
+        Map<String,Integer> swappedMap = new HashMap<>();
 
-            if (sourceMap.containsValue(me.getValue())) {
-                sourceMap.
+
+
+
+
+        for (Map.Entry<Integer, String> entry : sourceMap.entrySet()) {
+            Integer key = entry.getKey();
+            String value = entry.getValue();
+
+
+            if (!swappedMap.containsKey(value) || key < swappedMap.get(value)) {
+                swappedMap.put(value, key);
             }
-
         }
 
 
@@ -22,20 +27,6 @@ public class KeyValueSwapper {
 
 
 
-
-        for (Map.Entry<Integer,String> me :
-                sourceMap.entrySet()) {
-
-
-            hehe.put(me.getValue(),me.getKey());
-
-        }
-
-
-
-
-
-
-        return hehe;
+        return swappedMap;
     }
 }
